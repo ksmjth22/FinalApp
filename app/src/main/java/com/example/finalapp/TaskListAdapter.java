@@ -22,16 +22,17 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
     private List<Task> tasks;
     private TasksDB db;
+    private Executor executor;
 
-    public TaskListAdapter(ToDoListActivity toDoListActivity, TasksDB db) {
+    public TaskListAdapter(TasksDB db) {
         this.db = db;
         this.tasks = new ArrayList<>();
+        this.executor = Executors.newSingleThreadExecutor();  // Reuse Executor
     }
 
-    public void setTaskList(TasksDB db, List<Task> tasks) {
-        this.db = db;
+    public void setTaskList(List<Task> tasks) {
         this.tasks = tasks;
-        notifyDataSetChanged();
+        notifyDataSetChanged();  // Notify the adapter that the data has changed
     }
 
     @NonNull
@@ -51,33 +52,32 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         if (task.imageURI != null && !task.imageURI.isEmpty()) {
             holder.imageView.setImageURI(Uri.parse(task.imageURI));
         } else {
-            holder.imageView.setImageResource(R.drawable.ic_launcher_background);
+            holder.imageView.setImageResource(R.drawable.ic_launcher_background);  // Default image if none exists
         }
 
         holder.doneCheckBox.setChecked(task.done);
 
+        // Update the 'done' status when checkbox is checked/unchecked
         holder.doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             task.done = isChecked;
-            Executor myExecutor = Executors.newSingleThreadExecutor();
-            myExecutor.execute(() -> db.tasksDAO().updateTask(task));
+            executor.execute(() -> db.tasksDAO().updateTask(task));  // Efficient background update
         });
 
-        // ✅ Tap to edit the task
+        // Edit Task: Launch Edit Activity
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ToDo.class);
             intent.putExtra("editMode", true);
-            intent.putExtra("taskId", task.uid);
+            intent.putExtra("taskId", task.uid);  // Pass task ID to edit
             v.getContext().startActivity(intent);
         });
 
-        // 🗑️ Long press to delete the task
+        // Delete Task: Show confirmation dialog
         holder.itemView.setOnLongClickListener(v -> {
             new androidx.appcompat.app.AlertDialog.Builder(v.getContext())
                     .setTitle("Delete Task")
                     .setMessage("Are you sure you want to delete this task?")
                     .setPositiveButton("Delete", (dialog, which) -> {
-                        Executor myExecutor = Executors.newSingleThreadExecutor();
-                        myExecutor.execute(() -> db.tasksDAO().deleteTask(task));
+                        executor.execute(() -> db.tasksDAO().deleteTask(task));  // Delete task in background
                     })
                     .setNegativeButton("Cancel", null)
                     .show();
@@ -87,7 +87,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return (tasks == null) ? 0 : tasks.size();
+        return tasks == null ? 0 : tasks.size();  // Safe check for null list
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

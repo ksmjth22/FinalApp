@@ -30,4 +30,7 @@ public class Task {
 
     @ColumnInfo(name = "done")
     public boolean done;  // Boolean indicating whether the task is completed or not
+
+    @ColumnInfo(name = "shared")  // Added the shared field to the class
+    public boolean shared;  // Boolean indicating whether the task is shared or not
 }

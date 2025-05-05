@@ -17,27 +17,33 @@
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="4dp"/>
 
     <!-- Title -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="Task Title"
+        android:textSize="18sp"
+        android:textColor="#424242"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/taskTitleView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Task Title"
+        android:hint="Enter Task Title"
+        android:textColor="#424242"
+        android:backgroundTint="#424242"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="8dp" />
 
     <!-- Description -->
     <TextView
@@ -45,19 +51,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:textSize="16sp"
+        android:textColor="#424242"
         app:layout_constraintTop_toBottomOf="@id/taskTitleView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/taskDescriptionView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Task Description"
+        android:hint="Enter Task Description"
+        android:textColor="#424242"
+        android:backgroundTint="#424242"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="8dp" />
 
     <!-- Due Date -->
     <TextView
@@ -65,9 +76,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Due Date"
+        android:textSize="16sp"
+        android:textColor="#424242"
         app:layout_constraintTop_toBottomOf="@id/taskDescriptionView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/taskDueDateView"
@@ -77,10 +90,13 @@
         android:focusable="false"
         android:clickable="true"
         android:onClick="onClick"
+        android:textColor="#424242"
+        android:backgroundTint="#424242"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/dueDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="8dp"/>
 
     <!-- Due Time -->
     <TextView
@@ -88,9 +104,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Due Time"
+        android:textSize="16sp"
+        android:textColor="#424242"
         app:layout_constraintTop_toBottomOf="@id/taskDueDateView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/taskDueTimeView"
@@ -100,22 +118,27 @@
         android:focusable="false"
         android:clickable="true"
         android:onClick="onTimeClick"
+        android:textColor="#424242"
+        android:backgroundTint="#424242"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/dueTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="8dp"/>
 
-    <!-- Camera -->
+    <!-- Camera Button -->
     <ImageButton
         android:id="@+id/cameraButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:contentDescription="Take Photo"
         android:src="@android:drawable/ic_menu_camera"
         android:onClick="onCameraClick"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintTop_toBottomOf="@id/taskDueTimeView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"/>
 
     <!-- Image Preview -->
     <ImageView
@@ -126,32 +149,34 @@
         app:layout_constraintTop_toBottomOf="@id/cameraButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="16dp"/>
 
-    <!-- Save Button (Styled Circular) -->
-    <Button
-        android:id="@+id/saveTaskButton"
-        android:layout_width="180dp"
-        android:layout_height="56dp"
-        android:text="Save"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:fontFamily="sans-serif-medium"
-        android:backgroundTint="#424242"
-        android:layout_margin="24dp"
-        app:cornerRadius="28dp"
-        app:layout_constraintTop_toBottomOf="@id/taskImageView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+    <!-- Shared Task Checkbox -->
     <CheckBox
         android:id="@+id/sharedCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shared Task"
-        app:layout_constraintTop_toBottomOf="@id/taskDueTimeView"
+        android:textColor="#424242"
+        app:layout_constraintTop_toBottomOf="@id/taskImageView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/saveTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#FF9800"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/sharedCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="28dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
