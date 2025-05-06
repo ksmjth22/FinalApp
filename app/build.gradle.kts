@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    // ✅ DO NOT include 'kotlin-kapt' for Java
+
 }
 
 android {

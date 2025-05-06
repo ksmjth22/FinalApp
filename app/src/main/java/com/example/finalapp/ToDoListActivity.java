@@ -52,7 +52,7 @@ public class ToDoListActivity extends AppCompatActivity {
             taskListAdapter.setTaskList(updatedTasks);
         });
 
-        // ✅ Filter Buttons
+
         Button filterAll = findViewById(R.id.filterAll);
         Button filterShared = findViewById(R.id.filterShared);
         Button filterPersonal = findViewById(R.id.filterPersonal);

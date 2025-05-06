@@ -8,7 +8,7 @@
     android:background="#FFFFFF"
     tools:context=".ToDoListActivity">
 
-    <!-- ✅ Filter Buttons -->
+
     <LinearLayout
         android:id="@+id/filterButtons"
         android:layout_width="0dp"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- ✅ Add Task FAB with Content Description -->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addTask"
         android:layout_width="wrap_content"

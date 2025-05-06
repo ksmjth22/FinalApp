@@ -127,9 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <!-- Camera Button -->
 
-    <!-- Image Preview -->
     <ImageButton
         android:id="@+id/cameraButton"
         android:layout_width="48dp"
@@ -164,7 +162,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- Save Button -->
+
     <Button
         android:id="@+id/saveTaskButton"
         android:layout_width="wrap_content"
