@@ -13,11 +13,10 @@ import java.util.List;
 public interface TasksDAO {
 
 
-    //add a task to the database
     @Insert
     void insert(Task task);
 
-    //Observe for changes to the tasks in the database
+
     @Query("SELECT * FROM task")
     LiveData<List<Task>> observeAll();
 

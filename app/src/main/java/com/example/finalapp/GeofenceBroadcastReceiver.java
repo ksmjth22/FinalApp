@@ -42,7 +42,7 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
 
         Log.d("GeofenceReceiver", "Geofence triggered: " + geofenceId);
 
-        // Send a local notification
+
         sendNotification(context, "Reminder Location Reached", "You’ve arrived at your task location.");
     }
 
@@ -50,7 +50,7 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Create the channel on Android 8.0+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,

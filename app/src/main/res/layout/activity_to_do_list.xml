@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".ToDoListActivity">
 
     <!-- ✅ Filter Buttons -->
@@ -24,22 +25,24 @@
             android:id="@+id/filterAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All" />
+            android:text="All"
+            android:backgroundTint="#FF9800" />
 
         <Button
             android:id="@+id/filterShared"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shared" />
+            android:text="Shared"
+            android:backgroundTint="#9E9E9E" />
 
         <Button
             android:id="@+id/filterPersonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Personal" />
+            android:text="Personal"
+            android:backgroundTint="#9E9E9E" />
     </LinearLayout>
 
-    <!-- ✅ Task List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskListRecyclerView"
         android:layout_width="0dp"
@@ -56,10 +59,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
+        android:layout_marginBottom="32dp"
         android:contentDescription="Add Task"
         android:onClick="addTask"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:backgroundTint="#FF9800" />
 </androidx.constraintlayout.widget.ConstraintLayout>

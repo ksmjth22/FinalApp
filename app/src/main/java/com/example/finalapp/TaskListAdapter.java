@@ -32,7 +32,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
     public void setTaskList(List<Task> tasks) {
         this.tasks = tasks;
-        notifyDataSetChanged();  // Notify the adapter that the data has changed
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -63,7 +63,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             executor.execute(() -> db.tasksDAO().updateTask(task));  // Efficient background update
         });
 
-        // Edit Task: Launch Edit Activity
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ToDo.class);
             intent.putExtra("editMode", true);
@@ -71,7 +71,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             v.getContext().startActivity(intent);
         });
 
-        // Delete Task: Show confirmation dialog
         holder.itemView.setOnLongClickListener(v -> {
             new androidx.appcompat.app.AlertDialog.Builder(v.getContext())
                     .setTitle("Delete Task")

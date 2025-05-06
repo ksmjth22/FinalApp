@@ -30,13 +30,5 @@ public abstract class TasksDB extends RoomDatabase {
                 .build();
     }
 
-    // Removed the MIGRATION_1_2 as it's no longer necessary
-    // static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-    //     @Override
-    //     public void migrate(@NonNull SupportSQLiteDatabase database) {
-    //         Log.d("Migration", "Running migration from version 1 to 2");
-    //         database.execSQL("ALTER TABLE Task ADD COLUMN shared INTEGER NOT NULL DEFAULT 0");
-    //     }
-    // };
 
 }

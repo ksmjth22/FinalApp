@@ -34,9 +34,9 @@ android {
 }
 
 dependencies {
-    // Room Database dependencies for Java
-    implementation("androidx.room:room-runtime:2.5.1") // Use the latest stable version
-    annotationProcessor("androidx.room:room-compiler:2.5.1") // Same version for compiler
+    // Room Database dependencies
+    implementation("androidx.room:room-runtime:2.5.1")
+    annotationProcessor("androidx.room:room-compiler:2.5.1")
 
     // Other dependencies
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.activity:activity:1.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // Testing dependencies
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.espresso:espresso-core:3.4.0")

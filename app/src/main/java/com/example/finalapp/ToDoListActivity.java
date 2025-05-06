@@ -32,11 +32,10 @@ public class ToDoListActivity extends AppCompatActivity {
 
         db = TasksDB.getInstance(this);
 
-        // Setup RecyclerView
         RecyclerView recyclerView = findViewById(R.id.taskListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // ✅ Use the correct adapter constructor
+
         taskListAdapter = new TaskListAdapter(db);
         recyclerView.setAdapter(taskListAdapter);
 
@@ -46,11 +45,11 @@ public class ToDoListActivity extends AppCompatActivity {
             return insets;
         });
 
-        // ✅ Observe task changes from DB
+
         LiveData<List<Task>> tasks = db.tasksDAO().observeAll();
         tasks.observe(this, updatedTasks -> {
             allTasks = updatedTasks;
-            taskListAdapter.setTaskList(updatedTasks); // ✅ Matches your adapter method
+            taskListAdapter.setTaskList(updatedTasks);
         });
 
         // ✅ Filter Buttons
